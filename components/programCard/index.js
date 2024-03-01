@@ -1,21 +1,30 @@
 import { RatingSm } from "../rating";
 import { roundVote } from "../../utils/roundVote";
 import { shortDateMask } from "../../utils/dateMask";
-import { Text, View, Image, SafeAreaView, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Pressable,
+} from "react-native";
 
 export const ProgramCard = ({ program, handleProgram, media }) => {
   return (
     <View className="min-h-80 bg-opacity-50 mt-4 w-36 mx-2">
       <View className="relative">
-        <Image
-          onTouchEnd={() =>
-            handleProgram(program.media_type || media, program.id)
-          }
-          source={{
-            uri: `https://image.tmdb.org/t/p/w220_and_h330_face${program.poster_path}`,
-          }}
-          className="h-52 rounded-lg"
-        />
+        <Pressable
+          onPress={() => handleProgram(program.media_type || media, program.id)}
+        >
+          <Image
+            source={{
+              uri: `https://image.tmdb.org/t/p/w220_and_h330_face${program.poster_path}`,
+            }}
+            className="h-52 rounded-lg"
+          />
+        </Pressable>
+
         <RatingSm vote_average={roundVote(program.vote_average)} />
       </View>
       <Text

@@ -12,7 +12,7 @@ export const DataSwitch = ({ options, selectedOption, handleSwitch }) => {
           className="flex-1 w-full items-center h-full justify-center"
         >
           <Pressable
-            onTouchEnd={() => handleSwitch(el.option)}
+            onPress={() => handleSwitch(el.option)}
             className={`${
               selectedOption === el.option &&
               " bg-slate-900 h-full justify-center w-full items-center flex text-white rounded-full"
